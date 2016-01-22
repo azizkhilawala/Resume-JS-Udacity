@@ -126,12 +126,34 @@ var work = {
 };
 
 
-// $("div.work-entry").prepend(HTMLworkEmployer.replace("%data%",work.jobs[0].employer));
-$("#workExperience").prepend(HTMLworkStart);
+ // $("div.work-entry").prepend(HTMLworkEmployer.replace("%data%",work.jobs[0].employer));
+
+// $("#workExperience").prepend(HTMLworkStart);
 // $("div.work-entry>a").prepend(HTMLworkTitle.replace("%data%",work.jobs[0].title));
 // $('HTMLworkEmployer').append(HTMLworkTitle.replace("%data%",work.jobs[0].title));
-$("div.work-entry").prepend(HTMLworkEmployer.replace("%data%",work.jobs[0].employer));
-$("#workExperience").append($("div.work-entry"));
+// $("div.work-entry").prepend(HTMLworkEmployer.replace("%data%",work.jobs[0].employer));
+
+function displayWork(){
+	for(job in work.jobs){
+		if(work.jobs[job]){
+			$("#workExperience").append(HTMLworkStart);
+			var formattedEmployer =  HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
+			var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
+			var formattedEmployerTitle = formattedEmployer + formattedTitle;
+			var formattedDates = HTMLworkDates.replace("%data%",work.jobs[job].dates);
+			var formattedLocation = HTMLworkLocation.replace("%data%",work.jobs[job].location);
+			var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[job].description);
+			$(".work-entry:last").append(formattedEmployerTitle);
+			$(".work-entry:last").append(formattedDates);
+			$(".work-entry:last").append(formattedLocation);
+			$(".work-entry:last").append(formattedDescription);
+	}
+	}
+}
+
+displayWork();
+
+
 
 // $("#workExperience").append(HTMLworkEmployer.replace("%data%",work.jobs[0].employer));
 
