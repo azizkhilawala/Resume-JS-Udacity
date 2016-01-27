@@ -69,6 +69,20 @@ $(document).ready(function() {
   });
 });
 
+function inName(){
+  var nameArray = bio.name.split(" ");
+  var firstName = nameArray[0].toString();
+  var lastName = nameArray[1].toString();
+  var firstWord = firstName.slice(0,1).toUpperCase();
+  firstName = firstWord + firstName.slice(1).toLowerCase();
+  lastName = lastName.toUpperCase();
+  var fullName = firstName + ' '+ lastName;
+  return fullName;
+};
+
+
+
+
 /*
 The next few lines about clicks are for the Collecting Click Locations quiz in Lesson 2.
 */
