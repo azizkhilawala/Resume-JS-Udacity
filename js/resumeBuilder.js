@@ -110,14 +110,14 @@ var work = {
 		{
 			"employer" : "Quinnox Consultany Services",
 			"title" : "Consultant",
-			"location" : "Mumbai, India",
+			"location" : "SEEPZ, Andheri(East), Mumbai, India",
 			"dates" : "August 2014 to Present",
 			"description" : "Working for a client named Waste Management(WM) Inc. In the first year, I worked in production support under the OCS project (Onboard Computing System). Later shifted to development project named OPUS (Opeations Performance and Utility System). Currently working as a UI / Java / Support resource in OPUS. In a nutshell, Worked as a developer on various applications. Also Provided L2 & L3 support. Fixed user interface fixes to enhance the usability of the applications."
 		},
 		{
 			"employer" : "Tata Institute of Fundamental Research (TIFR)",
 			"title" : "Project Intern",
-			"location": "Mumbai, India",
+			"location": "Navy Nagar, Colaba, Mumbai, India",
 			"dates" : "March 2013 - March 2014",
 			"description" : "Developed a web application used to manage the class B-IPv4 network and associated subnets at TIFR."
 		}
@@ -215,7 +215,7 @@ var bio = {
 		"email" : "azizkhilawala@gmail.com",
 		"github" : "https://github.com/azizkhilawala",
 		"twitter" : "@azizkhilawala",
-		"location" : "Mumbai, India",
+		"location" : "Cotton Green, Mumbai, India",
 		"blog": "http://www.aziz.khilawala.com"
 	},
 	"skills" : ["HTML","CSS","JavaScript"]
@@ -232,6 +232,12 @@ $("#topContacts").prepend(HTMLmobile.replace("%data%",bio.contacts.mobile));
 $("#header").prepend($("#topContacts"));
 $("#header").prepend(HTMLheaderRole.replace("%data%",bio.role));
 $("#header").prepend(HTMLheaderName.replace("%data%",bio.name));
+
+$("#footerContacts").prepend(HTMLblog.replace("%data%",bio.contacts.blog));
+$("#footerContacts").prepend(HTMLgithub.replace("%data%",bio.contacts.github));
+$("#footerContacts").prepend(HTMLtwitter.replace("%data%",bio.contacts.twitter));
+$("#footerContacts").prepend(HTMLemail.replace("%data%",bio.contacts.email));
+$("#footerContacts").prepend(HTMLmobile.replace("%data%",bio.contacts.mobile));
 
 
 if(bio.skills.length > 0){
@@ -250,7 +256,7 @@ var education = {
 	"schools" : [
 		{
 			"name" : "St Peter's school",
-			"location": "Mumbai",
+			"location": "Shivdas Champsi Marg, Mazgaon, Mumbai, India",
 			"degree" : "ICSE",
 			"major" : "Science",
 			"dates" : "March 1996 - March 2008",
@@ -258,7 +264,7 @@ var education = {
 		},
 		{
 			"name" : "B.J.P.C Jr College",
-			"location" : "Mumbai",
+			"location" : "Charni Road, Mumbai, India",
 			"degree" : "H.S.C",
 			"major" : "Science",
 			"dates" : "August 2008 - April 2010",
@@ -266,7 +272,7 @@ var education = {
 		},
 		{
 			"name" : "M.H Saboo Siddik COE",
-			"location" :"Mumbai",
+			"location" :"Byculla, Mumbai, India",
 			"degree" : "Bachelor of Engineering",
 			"major" : "Computer Science",
 			"dates" : "August 2010 - May 2014",
@@ -324,6 +330,7 @@ education.display = function(){
 		}
 	}
 	$("#education").append(HTMLonlineClasses);
+	$("#education h3").after(HTMLschoolStart);
 	for(online in education.onlineCourses){
 		if(education.onlineCourses[online]){
 			var formattedOnlineTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[online].title);
@@ -331,11 +338,13 @@ education.display = function(){
 			var formattedOnlineDates = HTMLonlineDates.replace("%data%",education.onlineCourses[online].dates);
 			var formattedOnlineUrl = HTMLonlineURL.replace("%data%",education.onlineCourses[online].url);
 			var formattedOnlineTitleSchool = formattedOnlineTitle + formattedOnlineSchool;
-			$(HTMLonlineClasses).append(formattedOnlineTitleSchool);
-			$("#education").append(formattedOnlineDates);
-			$("#education").append(formattedOnlineUrl);
+			$(".education-entry:last").append(formattedOnlineTitleSchool);
+			$(".education-entry:last").append(formattedOnlineDates);
+			$(".education-entry:last").append(formattedOnlineUrl);
 		}
 	}
 };
 
 education.display();
+
+$("#mapDiv").append(googleMap);
