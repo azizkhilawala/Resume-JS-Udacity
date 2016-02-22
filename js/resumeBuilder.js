@@ -499,6 +499,22 @@ psiResults = {
  }
 }
 
+var sum = 0;
 function totalBytes(psiResults){
-	
+	for(bytes in psiResults.pageStats){
+		if(bytes.match("Bytes"))
+			sum = sum + Number(psiResults.pageStats[bytes]);
+	}
+	return sum;
 }
+console.log(totalBytes(psiResults));
+
+var nameArray = [];
+function ruleList(psiResults){
+	for(names in psiResults.formattedResults.ruleResults){
+		nameArray.push(psiResults.formattedResults.ruleResults[names].localizedRuleName);
+	}
+	return nameArray;
+}
+
+console.log(ruleList(psiResults));
